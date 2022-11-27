@@ -1,0 +1,49 @@
+###
+POST http://localhost:8080/modifyData/addProgram
+Content-Type: application/json
+
+{
+    "type" : "sajat",
+    "image": "https://res.cloudinary.com/nekunk-x/image/upload/v1664053710/allando/csomorimenhely.jpg",
+    "title": "Csömöri menhelyen segítés",
+    "description": "A Csömöri Állatvédő Civil Szervezet egész évben várja azokat az önkéntes diákokat, akik szeretnének nekik segíteni vendégeik ellátásában kutyamenhelyükön. Itt további információkat találtok a menhelyről: https://csomoriallatvedok.hu/",
+    "contactName" : "Halász Barbara",
+    "contactEmail" : "",
+    "contactPhone" : "06303682682",
+    "registerLink" : ""
+}
+
+###
+POST http://localhost:8080/modifyData/galeria
+Content-Type: application/json
+
+{
+    "title": "Iskolatakarítás - 2022. április",
+    "pictures": [
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_1_ek6afb.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_2_hirlah.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_3_ynur5l.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_4_nksidh.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_5_vwf3sj.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_6_ht8wb0.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_7_qbxvwa.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_8_wctty8.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256039/galeria/takaritas/kep_9_yxw6ve.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256038/galeria/takaritas/kep_10_qepkyd.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256039/galeria/takaritas/kep_11_dscc45.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256039/galeria/takaritas/kep_12_hdhwhb.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256039/galeria/takaritas/kep_13_rwzg7u.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256040/galeria/takaritas/kep_14_waqvcu.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256040/galeria/takaritas/kep_15_ookuyc.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256039/galeria/takaritas/kep_16_l7bbr5.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256039/galeria/takaritas/kep_17_bmtnia.jpg",
+        "https://res.cloudinary.com/nekunk-x/image/upload/v1665256039/galeria/takaritas/kep_18_pxndqz.jpg"
+    ]
+}
+
+
+###
+POST http://localhost:8080/modifyData/deleteProgram
+Content-Type: application/json
+
+{"programID":"63795387e9e0d618433e5adb"}

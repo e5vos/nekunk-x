@@ -1,0 +1,11 @@
+###
+GET http://localhost:8080/getData/allando
+
+###
+GET http://localhost:8080/getData/idoszakos
+
+###
+GET http://localhost:8080/getData/sajat
+
+###
+GET http://localhost:8080/getData/galeria
