@@ -6,7 +6,7 @@ import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
-import Logo from "../public/logo.jpg";
+import Logo from "../public/notext.jpg";
 
 export default function NavigationBar({ pageTitle, currentPage }) {
   const [ShownOther, setShownOther] = useState(false);
@@ -20,13 +20,13 @@ export default function NavigationBar({ pageTitle, currentPage }) {
       <Head>
         <title>{newPageTitle}</title>
       </Head>
-      <div className="w-full h-auto border-b-2 pr-4 pl-2 pb-0 flex justify-between">
+      <div className="w-full h-auto border-b-2 pr-4 pl-4 pb-0 flex justify-between">
         <div className="flex justify-start items-center gap-4">
           <Link href="/">
             <Image
               className="cursor-pointer"
-              height="60"
-              width="60"
+              height="50"
+              width="50"
               src={Logo}
               alt="Nekünk X logó"
             />
@@ -131,6 +131,17 @@ export default function NavigationBar({ pageTitle, currentPage }) {
                     }
                   >
                     Galéria
+                  </p>
+                </Link>
+                <Link href="/gyik">
+                  <p
+                    className={
+                      currentPage == "gyik"
+                        ? "font-semibold tracking-wide"
+                        : "tracking-wide"
+                    }
+                  >
+                    Gyakran ismételt kérdések
                   </p>
                 </Link>
                 <Link href="/szerzodeskotes-menete">
@@ -259,6 +270,14 @@ export default function NavigationBar({ pageTitle, currentPage }) {
                     className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
                   >
                     Galéria
+                  </p>
+                </Link>
+                <Link href="/gyik">
+                  <p
+                    style={currentPage == "gyik" ? { fontWeight: "bold" } : {}}
+                    className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
+                  >
+                    Gyakran ismételt kérdések
                   </p>
                 </Link>
                 <Link href="/fogado-adatbazis">

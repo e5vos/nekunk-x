@@ -30,7 +30,7 @@ export default function Program({ data, setShown }) {
           <h1 className="text-lg font-semibold mt-2">Kapcsolat:</h1>
           <div className="flex justify-start gap-2 flex-wrap">
             {data.contactName ? (
-              <div className="bg-blue-400 bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg">
+              <div className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg">
                 <ContactPageIcon />
                 <h1>{data.contactName}</h1>
               </div>
@@ -39,7 +39,7 @@ export default function Program({ data, setShown }) {
             )}
             {data.contactEmail ? (
               <div
-                className="bg-blue-400 bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
+                className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
                 onClick={() =>
                   (window.location = `mailto:${data.contactEmail}`)
                 }
@@ -52,7 +52,7 @@ export default function Program({ data, setShown }) {
             )}
             {data.contactPhone ? (
               <div
-                className="bg-blue-400 bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
+                className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
                 onClick={() => (window.location = `tel:${data.contactPhone}`)}
               >
                 <PhoneIcon />
@@ -63,7 +63,7 @@ export default function Program({ data, setShown }) {
             )}
             {data.registerLink ? (
               <Link href={data.registerLink}>
-                <div className="bg-blue-400 bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer">
+                <div className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer">
                   <NoteAddIcon />
                   <h1>{data.registerLink}</h1>
                 </div>
