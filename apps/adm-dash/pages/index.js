@@ -13,11 +13,11 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
-// import { UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const { user } = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
     onOpen();
@@ -60,7 +60,8 @@ export default function Home() {
         >
           <Heading color="white">Kezelőlap - Nekünk X Admin</Heading>
           <Spacer />
-          {/*<UserButton />*/}
+
+          <UserButton />
         </Flex>
       </Box>
       <Flex
