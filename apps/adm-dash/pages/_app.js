@@ -10,25 +10,27 @@ import {
 } from "@clerk/nextjs";
 
 function MyApp({ Component, pageProps }) {
-  <ChakraProvider>
-    <ClerkProvider {...pageProps}>
-      <SignedIn>
-        <WithUser>
-          {(user) => {
-            console.log(user.publicMetadata.role);
-            if (user.publicMetadata.role === "admin") {
-              return <Component {...pageProps} />;
-            } else {
-              return <WaitForGoodUser />;
-            }
-          }}
-        </WithUser>
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
-    </ClerkProvider>
-  </ChakraProvider>;
+  return (
+    <ChakraProvider>
+      <ClerkProvider {...pageProps}>
+        <SignedIn>
+          <WithUser>
+            {(user) => {
+              console.log(user.publicMetadata.role);
+              if (user.publicMetadata.role === "admin") {
+                return <Component {...pageProps} />;
+              } else {
+                return <WaitForGoodUser />;
+              }
+            }}
+          </WithUser>
+        </SignedIn>
+        <SignedOut>
+          <RedirectToSignIn />
+        </SignedOut>
+      </ClerkProvider>
+    </ChakraProvider>
+  );
 }
 
 export default MyApp;

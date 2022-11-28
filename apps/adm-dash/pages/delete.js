@@ -1,7 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Top from "../components/top";
-import { Box, Flex, Heading, Select, Button } from "@chakra-ui/react";
+import { UserButton } from "@clerk/nextjs";
+import {
+  Box,
+  Flex,
+  Heading,
+  Select,
+  Button,
+  Spacer,
+  Text,
+} from "@chakra-ui/react";
+import Image from "next/image";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -11,19 +21,9 @@ import {
   AlertDialogOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function Delete() {
-  const [CurrentPage, setCurrentPage] = useState(1);
-  const [Database, setDatabase] = useState("1");
   const [Programs, setPrograms] = useState([]);
   const [SelectedProg, setSelectedProg] = useState("1");
 
@@ -31,9 +31,9 @@ export default function Delete() {
 
   async function deleteSelected() {
     onClose();
-    const deleteinfo = { databaseId: Database, programId: SelectedProg };
+    const deleteinfo = { programID: SelectedProg };
     const resp = await axios.post(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/modifyData/delete`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/modifyData/deleteProgram`,
       deleteinfo
     );
     console.log(resp);
@@ -42,22 +42,16 @@ export default function Delete() {
     }
   }
 
-  async function goToTwo() {
-    let toGetDatabase;
-
-    if (Database == "1") {
-      toGetDatabase = "allando";
-    } else if (Database == "2") {
-      toGetDatabase = "idoszakos";
-    } else if (Database == "3") {
-      toGetDatabase = "sajat";
-    }
+  async function getPrograms() {
     const db = await axios.get(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/getData/${toGetDatabase}`
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/getData/all`
     );
     setPrograms(db.data);
-    setCurrentPage(2);
   }
+
+  useEffect(() => {
+    getPrograms();
+  }, []);
 
   return (
     <>
@@ -82,7 +76,7 @@ export default function Delete() {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-      <Top name="Törlés"></Top>
+      <Top name="Program törlése"></Top>
       <Box w={"100vw"} h={"10vh"} bgGradient="linear(to-r, red.900, blue.900)">
         <Flex
           w={"100%"}
@@ -91,8 +85,20 @@ export default function Delete() {
           justify={"flex-start"}
           align={"center"}
           pl={"2vw"}
+          pr={"2vw"}
         >
-          <Heading color="white">Dashboard - Nekünk X Admin</Heading>
+          <Image
+            src="https://images.clerk.dev/uploaded/img_2GxE5ALDHyQqnxvsW9dvYjYkzfZ.jpeg"
+            width={60}
+            height={60}
+            className="rounded-xl mr-4"
+          />
+          <Heading fontSize={20} color="white">
+            Nekünk X Admin Dashboard
+          </Heading>
+          <Spacer />
+
+          <UserButton />
         </Flex>
       </Box>
       <Flex
@@ -109,7 +115,11 @@ export default function Delete() {
         pb={"10vh"}
       >
         <Heading>Program törlése</Heading>
-        {CurrentPage == 1 && (
+        <Text mt="1" color={"gray.200"}>
+          Amennyiben lejárt egy lehetőség a weboldalunkon, itt törölheted azt.
+          <strong> Vigyázz, nagy a felelősség!</strong>
+        </Text>
+        {Programs.length > 0 ? (
           <Box
             w={"100%"}
             bgColor="rgba(0, 0, 0, 0.4)"
@@ -118,38 +128,10 @@ export default function Delete() {
             pr="5"
             pt="5"
             pb="5"
+            mt={"5"}
           >
-            <Heading mb="5" className="font-bold text-2xl">
-              1. lépés - Válaszd ki a listát
-            </Heading>
-            <Select
-              id="databaseselector"
-              value={Database}
-              onChange={(e) => {
-                setDatabase(e.target.value);
-              }}
-            >
-              <option value="1">Állandó lehetőségek</option>
-              <option value="2">Időszakos lehetőségek</option>
-              <option value="3">Általunk szervezett lehetőségek</option>
-            </Select>
-            <Button mt="5" onClick={() => goToTwo()} colorScheme="green">
-              Következő
-            </Button>
-          </Box>
-        )}
-        {CurrentPage == 2 && (
-          <Box
-            w={"100%"}
-            bgColor="rgba(0, 0, 0, 0.4)"
-            rounded={20}
-            pl={"5"}
-            pr="5"
-            pt="5"
-            pb="5"
-          >
-            <Heading mb="5" className="font-bold text-2xl">
-              2. lépés - Válaszd ki a törlendő programot
+            <Heading mb="5" fontSize={"xl"}>
+              Válaszd ki a törlendő programot!
             </Heading>
             <Select
               value={SelectedProg}
@@ -158,15 +140,24 @@ export default function Delete() {
               }}
             >
               {Programs.map((element, index) => (
-                <option key={element.id} value={element.id}>
+                <option key={element.id} value={element._id}>
                   {element.title}
                 </option>
               ))}
             </Select>
-            <Button mt="5" onClick={onOpen} colorScheme="red">
-              Kijelölt program törlése
-            </Button>
+            <Box mt="5">
+              <Button onClick={onOpen} colorScheme="red">
+                Kijelölt program törlése
+              </Button>
+              <Link href="/">
+                <Button ml="3" colorScheme="grey" variant={"outline"}>
+                  Mégse
+                </Button>
+              </Link>
+            </Box>
           </Box>
+        ) : (
+          <></>
         )}
       </Flex>
     </>
