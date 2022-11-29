@@ -37,6 +37,7 @@ export default function Pics({ data, key, element }) {
           disableScroll={false}
           closeOnClickOutside={true}
           onClose={closeImageViewer}
+          className="z-50"
         />
       )}
     </div>

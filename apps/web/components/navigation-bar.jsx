@@ -20,7 +20,7 @@ export default function NavigationBar({ pageTitle, currentPage }) {
       <Head>
         <title>{newPageTitle}</title>
       </Head>
-      <div className="w-full h-auto border-b-2 pr-4 pl-4 pb-0 flex justify-between">
+      <div className="w-full h-auto border-b-2 pr-4 pl-4 pb-0 flex justify-between fixed top-0 z-40 bg-white">
         <div className="flex justify-start items-center gap-4">
           <Link href="/">
             <Image
@@ -183,7 +183,7 @@ export default function NavigationBar({ pageTitle, currentPage }) {
         </div>
       </div>
       {ShownMobile && (
-        <div className="absolute w-full min-h-full bg-white flex flex-col justify-center items-center gap-4 text-xl z-50">
+        <div className="w-full min-h-full bg-white flex flex-col justify-center items-center gap-4 text-xl z-30 fixed">
           <Link href="/">
             <p
               style={currentPage == "kezdolap" ? { fontWeight: "bold" } : {}}

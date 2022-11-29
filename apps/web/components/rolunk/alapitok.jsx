@@ -9,7 +9,7 @@ export default function Alapitok() {
       <div className="w-full flex justify-center pt-8">
         <h1 className="fotn-poppins text-xl font-bold">Az Ötletgazdák</h1>
       </div>
-      <div className="w-full h-auto flex lg:flex-row flex-col items-center justify-center gap-8 p-12">
+      <div className="w-full h-auto flex lg:flex-row flex-col items-center justify-center gap-8 lg:p-12 p-8">
         <div className="lg:w-1/2 w-full flex lg:flex-row flex-col lg:justify-evenly justify-start lg:items-start items-center">
           <div className="lg:w-1/2 w-full">
             <Image
@@ -18,7 +18,7 @@ export default function Alapitok() {
               className="rounded-md"
             ></Image>
           </div>
-          <div className="lg:w-1/2 w-full p-6">
+          <div className="lg:w-1/2 w-full lg:p-4 pt-2 lg:pt-4">
             <h1 className="poppins font-extrabold text-lg">Dámosy Panni</h1>
             <p className="text-justify">
               7. osztályosként kezdtem az Eötvösben önkénteskedni, és hamar
@@ -36,11 +36,11 @@ export default function Alapitok() {
           <div className="lg:w-1/2 w-full">
             <Image
               src={Bogi}
-              alt="Egy portré kép Dámosy Anna (Panni)ról"
+              alt="Egy portré kép Török Boglárkáról"
               className="rounded-md"
             ></Image>
           </div>
-          <div className="lg:w-1/2 w-full p-6">
+          <div className="lg:w-1/2 w-full lg:p-4 pt-2 lg:pt-4">
             <h1 className="poppins font-extrabold text-lg">Török Boglárka</h1>
             <p className="text-justify">
               2022-ben 10. osztályosként, amikor a 4. évemet töltöttem az
