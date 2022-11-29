@@ -3,15 +3,13 @@ import { Box, Flex, Heading, Text, Spacer } from "@chakra-ui/react";
 import Link from "next/link";
 import { UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
+import Top from "../components/top";
 
 export default function Home() {
   const { user } = useUser();
   return (
     <>
-      <Head>
-        <title>Nekünk X Admin Hub</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Top name="Hub"></Top>
       <Box w={"100vw"} h={"15vh"} className="bgtop">
         <Flex
           w={"100%"}

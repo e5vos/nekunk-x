@@ -50,7 +50,7 @@ export default function Home() {
         </ModalContent>
       </Modal>
 
-      <Top name="Nekünk X Admin Dashboard"></Top>
+      <Top name="Weboldal szerkesztő"></Top>
       <Box w={"100vw"} h={"15vh"} className="bgtop">
         <Flex
           w={"100%"}
