@@ -2,6 +2,7 @@ import Top from "../components/top";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Link from "next/link";
 import { Flex, Box, Text, Heading, Spacer, Button } from "@chakra-ui/react";
+import Image from "next/image";
 import {
   Modal,
   ModalOverlay,
@@ -12,15 +13,17 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
-// import { UserButton, useUser } from "@clerk/nextjs";
+import React, { useEffect, useState } from "react";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const { user } = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
-    onOpen();
+    if (user.firstName !== "Barnabás" && user.lastName !== "Gőz") {
+      onOpen();
+    }
   }, []);
   return (
     <>
@@ -30,7 +33,7 @@ export default function Home() {
           <ModalHeader>Figyelmeztetés</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            Kedves (nem igazán) felhasználó!
+            Kedves {user.firstName}!
             <br />
             Ezen oldal segítségével a Nekünk X hivatalos weboldalán megjelenő
             adatokat tudod szerkeszteni. Kérlek, hogy mindent gondj át, mielőtt
@@ -47,7 +50,7 @@ export default function Home() {
         </ModalContent>
       </Modal>
 
-      <Top name="Kezelőlap"></Top>
+      <Top name="Nekünk X Admin Dashboard"></Top>
       <Box w={"100vw"} h={"10vh"} bgGradient="linear(to-r, red.900, blue.900)">
         <Flex
           w={"100%"}
@@ -58,9 +61,18 @@ export default function Home() {
           pl={"2vw"}
           pr={"2vw"}
         >
-          <Heading color="white">Kezelőlap - Nekünk X Admin</Heading>
+          <Image
+            src="https://images.clerk.dev/uploaded/img_2GxE5ALDHyQqnxvsW9dvYjYkzfZ.jpeg"
+            width={60}
+            height={60}
+            className="rounded-xl mr-4"
+          />
+          <Heading fontSize={20} color="white">
+            Nekünk X Admin Dashboard
+          </Heading>
           <Spacer />
-          {/*<UserButton />*/}
+
+          <UserButton />
         </Flex>
       </Box>
       <Flex
@@ -76,7 +88,7 @@ export default function Home() {
         pt={"5vh"}
         pb={"10vh"}
       >
-        <Heading>Mit szeretnél csinálni,?</Heading>
+        <Heading>Mit szeretnél csinálni, {user.firstName}?</Heading>
         <Text mt="2" color={"gray.200"}>
           Ezen az oldalon tudod szerkeszteni a weboldal leggyakrabban
           szerkesztendő részeit.

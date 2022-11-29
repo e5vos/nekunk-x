@@ -2,10 +2,26 @@ import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import Script from "next/script";
+import Top from "../components/top";
+import { UserButton, useUser } from "@clerk/nextjs";
+import {
+  Box,
+  Flex,
+  Heading,
+  Select,
+  Button,
+  Spacer,
+  Text,
+  Input,
+} from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function Galeria() {
   const [ProgramName, setProgramName] = useState("");
+  const [ShowNextStep, setShowNextStep] = useState(false);
   const [Pics, setPics] = useState([]);
+
+  const { user } = useUser();
 
   async function savePhotos() {
     if (ProgramName == "") {
@@ -16,7 +32,7 @@ export default function Galeria() {
       alert("Nem adtál meg képet!");
       return;
     }
-    const toSend = { programName: ProgramName, pics: Pics };
+    const toSend = { title: ProgramName, pictures: Pics };
     const resp = await axios.post(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/modifyData/galeria`,
       toSend
@@ -41,9 +57,7 @@ export default function Galeria() {
           "facebook",
           "instagram",
         ],
-        googleApiKey: "<image_search_google_api_key>",
-        showAdvancedOptions: true,
-        cropping: false,
+        showCompletedButton: true,
         multiple: true,
         defaultSource: "local",
         styles: {
@@ -71,57 +85,158 @@ export default function Galeria() {
           },
         },
       },
-      (err, info) => {
+      async (err, result) => {
         if (!err) {
-          console.log("Upload Widget event - ", info);
+          console.log("Upload Widget event - ", result);
         }
-        if (!err && info.event === "success") {
-          const currentPics = [...Pics];
-          currentPics.push(info.info.url);
-          setPics(currentPics);
+        if (!err && result && result.event === "show-completed") {
+          const data = [];
+          await result.info.items.forEach((file) => {
+            data.push(file.uploadInfo.url);
+          });
+          await setPics(data);
+          console.log(Pics);
         }
       }
     );
   }
   return (
-    <div className="w-full h-screen bg-black flex flex-col items-center justify-center text-white gap-2">
-      <Script src="https://widget.cloudinary.com/v2.0/global/all.js" />
-      <h1 className="font-bold text-2xl">Képek feltöltése a galériába</h1>
-      <input
-        type={"text"}
-        placeholder="Program neve"
-        className="rounded-md p-2 text-black"
-        value={ProgramName}
-        onChange={(e) => {
-          setProgramName(e.target.value);
-        }}
-      ></input>
-      {ProgramName.length > 0 && (
-        <button
-          className="p-2 bg-white rounded-md text-black"
-          onClick={showUploadWidget}
+    <>
+      <Top name="Képfeltöltés a galériába"></Top>
+      <Box w={"100vw"} h={"10vh"} bgGradient="linear(to-r, red.900, blue.900)">
+        <Flex
+          w={"100%"}
+          h={"100%"}
+          bgGradient={"linear(to-b, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))"}
+          justify={"flex-start"}
+          align={"center"}
+          pl={"2vw"}
+          pr={"2vw"}
         >
-          Képek feltöltése
-        </button>
-      )}
-      {Pics.map((element, index) => (
-        <Image
-          alt="feltoltott kep"
-          src={element}
-          key={index}
-          width={300}
-          height={150}
-        ></Image>
-      ))}
+          <Image
+            src="https://images.clerk.dev/uploaded/img_2GxE5ALDHyQqnxvsW9dvYjYkzfZ.jpeg"
+            width={60}
+            height={60}
+            className="rounded-xl mr-4"
+          />
+          <Heading fontSize={20} color="white">
+            Nekünk X Admin Dashboard
+          </Heading>
+          <Spacer />
 
-      {Pics.length > 0 && ProgramName.length > 0 && (
-        <button
-          onClick={savePhotos}
-          className="p-2 rounded-md bg-white text-black font-bold"
+          <UserButton />
+        </Flex>
+      </Box>
+      <Flex
+        w={"100vw"}
+        minH={"90vh"}
+        direction={"column"}
+        justify={"flex-start"}
+        align={"flex-start"}
+        bgGradient="linear(to-r, red.900, blue.900)"
+        className="text-white gap-2"
+        pl={"10vw"}
+        pr={"10vw"}
+        pt={"5vh"}
+        pb={"10vh"}
+      >
+        <Heading>Képfeltöltés a galériába</Heading>
+        <Text mt="1" color={"gray.200"}>
+          Ezen az oldalon egy már megtartott programhoz képeket lehet
+          feltölteni. Kérlek kövest a sémát!
+        </Text>
+        <Script src="https://widget.cloudinary.com/v2.0/global/all.js" />
+        <Box
+          w={"100%"}
+          bgColor="rgba(0, 0, 0, 0.4)"
+          rounded={20}
+          pl={"5"}
+          pr="5"
+          pt="5"
+          pb="5"
+          mt={"5"}
         >
-          Mentés
-        </button>
-      )}
-    </div>
+          <h1 className="font-bold text-2xl">Program nevének megadása</h1>
+          <p>
+            Kérlek a következő sémát kövesd:{" "}
+            <strong>program teljes neve - évszám. hónap</strong>
+          </p>
+          <Input
+            placeholder="Program neve"
+            className="rounded-md p-2 text-white mt-2"
+            {...(ShowNextStep && { disabled: true })}
+            value={ProgramName}
+            onChange={(e) => {
+              setProgramName(e.target.value);
+            }}
+          ></Input>
+          <br />
+          <Box mt={2}>
+            <Button
+              onClick={() => setShowNextStep(true)}
+              {...(ShowNextStep && { disabled: true })}
+              colorScheme="whatsapp"
+            >
+              Mentés és továbblépés
+            </Button>
+            <Link href="/">
+              <Button ml="2" variant={"outline"} colorScheme="grey">
+                Mégsem
+              </Button>
+            </Link>
+          </Box>
+        </Box>
+        {ShowNextStep && (
+          <Box
+            w={"100%"}
+            bgColor="rgba(0, 0, 0, 0.4)"
+            rounded={20}
+            pl={"5"}
+            pr="5"
+            pt="5"
+            pb="5"
+            mt={"1"}
+          >
+            <h1 className="font-bold text-2xl">Képek feltöltése</h1>
+            <p>
+              Amikor a képeket feltöltötted, a Done gomb előtt kattints a SHOW
+              COMPLETED gombra. <strong>Ez menti el a képeket.</strong>
+            </p>
+            <Button mt="2" onClick={showUploadWidget} colorScheme="whatsapp">
+              Felület megnyitása
+            </Button>
+          </Box>
+        )}
+        {Pics.length > 0 && (
+          <Box
+            w={"100%"}
+            bgColor="rgba(0, 0, 0, 0.4)"
+            rounded={20}
+            pl={"5"}
+            pr="5"
+            pt="5"
+            pb="5"
+            mt={"1"}
+          >
+            <h1 className="font-bold text-2xl">Feltöltött képek</h1>
+            <Flex direction="row" className="gap-2" flexWrap={"wrap"} mt={2}>
+              {Pics.map((element, index) => (
+                <Image
+                  alt="feltoltott kep"
+                  src={element}
+                  className="rounded-xl"
+                  key={index}
+                  width={300}
+                  height={150}
+                ></Image>
+              ))}
+            </Flex>
+            <Button mt="5" onClick={savePhotos} colorScheme="whatsapp">
+              Mentés
+            </Button>
+          </Box>
+        )}
+      </Flex>
+    </>
   );
 }

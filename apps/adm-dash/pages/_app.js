@@ -8,19 +8,10 @@ import {
   RedirectToSignIn,
   WithUser,
 } from "@clerk/nextjs";
-import { extendTheme } from "@chakra-ui/react";
-
-const colors = {
-  brand: {
-    100: "#ea8c8b",
-  },
-};
-
-const theme = extendTheme({ colors });
 
 function MyApp({ Component, pageProps }) {
-  /*
-    <ChakraProvider theme={theme}>
+  return (
+    <ChakraProvider>
       <ClerkProvider {...pageProps}>
         <SignedIn>
           <WithUser>
@@ -39,9 +30,7 @@ function MyApp({ Component, pageProps }) {
         </SignedOut>
       </ClerkProvider>
     </ChakraProvider>
-          */
-
-  return <Component {...pageProps} />;
+  );
 }
 
 export default MyApp;

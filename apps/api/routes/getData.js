@@ -5,6 +5,17 @@ const router = express.Router();
 const Program = require("../models/programSchema");
 const Galeria = require("../models/galeriaSchema");
 
+router.get("/all", async (req, res) => {
+  try {
+    const programs = await Program.find();
+    res.status(200).json(programs);
+    signale.success("Minden program adatok lekérése sikeres.");
+  } catch (err) {
+    signale.fatal("Minden program adatok lekérése sikertelen.", err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 router.get("/allando", async (req, res) => {
   try {
     const allandoData = await Program.find({ type: "allando" }).exec();
