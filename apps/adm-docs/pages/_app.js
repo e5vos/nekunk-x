@@ -14,6 +14,7 @@ export default function Nextra({ Component, pageProps }) {
       <SignedIn>
         <WithUser>
           {(user) => {
+            console.log("in with user");
             if (user.publicMetadata.role === "admin") {
               return <Component {...pageProps} />;
             } else {

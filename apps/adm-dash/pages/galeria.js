@@ -13,10 +13,12 @@ import {
   Spacer,
   Text,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
 export default function Galeria() {
+  const toast = useToast();
   const [ProgramName, setProgramName] = useState("");
   const [ShowNextStep, setShowNextStep] = useState(false);
   const [Pics, setPics] = useState([]);
@@ -25,11 +27,23 @@ export default function Galeria() {
 
   async function savePhotos() {
     if (ProgramName == "") {
-      alert("Nem adtál meg nevet a programnak!");
+      toast({
+        title: "Hiba",
+        description: "Kérlek, add meg a program nevét!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
       return;
     }
     if (Pics.length == 0) {
-      alert("Nem adtál meg képet!");
+      toast({
+        title: "Hiba",
+        description: "Kérlek, adj meg legalább egy képet!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
       return;
     }
     const toSend = { title: ProgramName, pictures: Pics };
@@ -38,9 +52,22 @@ export default function Galeria() {
       toSend
     );
     if (resp.status == 200) {
-      alert("Sikeres mentés!");
+      toast({
+        title: "Siker",
+        description:
+          "Sikeresen hozzáadtad a programot! A mégsem gombbal visszatérhetsz a főoldalra.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
     } else {
-      alert("Sikertelen mentés! Kérlek próbáld meg újra!");
+      toast({
+        title: "Hiba",
+        description: "Hiba történt a program hozzáadásakor!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
     }
   }
 
@@ -103,11 +130,10 @@ export default function Galeria() {
   return (
     <>
       <Top name="Képfeltöltés a galériába"></Top>
-      <Box w={"100vw"} h={"10vh"} bgGradient="linear(to-r, red.900, blue.900)">
+      <Box w={"100vw"} h={"15vh"} className="bgtop">
         <Flex
           w={"100%"}
           h={"100%"}
-          bgGradient={"linear(to-b, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))"}
           justify={"flex-start"}
           align={"center"}
           pl={"2vw"}
@@ -129,26 +155,27 @@ export default function Galeria() {
       </Box>
       <Flex
         w={"100vw"}
-        minH={"90vh"}
+        minH={"85vh"}
         direction={"column"}
         justify={"flex-start"}
         align={"flex-start"}
-        bgGradient="linear(to-r, red.900, blue.900)"
-        className="text-white gap-2"
+        bgColor="white"
+        className="text-black gap-2"
         pl={"10vw"}
         pr={"10vw"}
         pt={"5vh"}
         pb={"10vh"}
       >
         <Heading>Képfeltöltés a galériába</Heading>
-        <Text mt="1" color={"gray.200"}>
+        <Text mt="1" color={"gray.900"}>
           Ezen az oldalon egy már megtartott programhoz képeket lehet
           feltölteni. Kérlek kövest a sémát!
         </Text>
         <Script src="https://widget.cloudinary.com/v2.0/global/all.js" />
         <Box
           w={"100%"}
-          bgColor="rgba(0, 0, 0, 0.4)"
+          bgColor="white"
+          className="shadow-2xl shadow-red-900/60"
           rounded={20}
           pl={"5"}
           pr="5"
@@ -163,7 +190,7 @@ export default function Galeria() {
           </p>
           <Input
             placeholder="Program neve"
-            className="rounded-md p-2 text-white mt-2"
+            className="rounded-md p-2 text-black mt-2"
             {...(ShowNextStep && { disabled: true })}
             value={ProgramName}
             onChange={(e) => {
@@ -179,7 +206,7 @@ export default function Galeria() {
             >
               Mentés és továbblépés
             </Button>
-            <Link href="/">
+            <Link href="/dashboard">
               <Button ml="2" variant={"outline"} colorScheme="grey">
                 Mégsem
               </Button>
@@ -189,7 +216,8 @@ export default function Galeria() {
         {ShowNextStep && (
           <Box
             w={"100%"}
-            bgColor="rgba(0, 0, 0, 0.4)"
+            bgColor="white"
+            className="shadow-2xl shadow-red-900/60"
             rounded={20}
             pl={"5"}
             pr="5"
@@ -210,7 +238,8 @@ export default function Galeria() {
         {Pics.length > 0 && (
           <Box
             w={"100%"}
-            bgColor="rgba(0, 0, 0, 0.4)"
+            bgColor="white"
+            className="shadow-2xl shadow-red-900/60"
             rounded={20}
             pl={"5"}
             pr="5"

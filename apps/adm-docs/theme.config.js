@@ -3,7 +3,7 @@ import Image from "next/image";
 export default {
   primaryHue: 13,
   docsRepositoryBase: "https://github.com/barnagoz/nekunkx-docs/blob/main",
-  titleSuffix: " – Nekünk X Admin Doku",
+  titleSuffix: " – Admin Dokumentáció",
   logo: (
     <>
       <Image
@@ -16,7 +16,7 @@ export default {
         className="text-gray-600 font-normal hidden md:inline bg-blue-200"
         style={{ marginLeft: "12px" }}
       >
-        - Adminisztrátori Dokumentáció
+        Nekünk X Admin Dokumentáció
       </span>
     </>
   ),

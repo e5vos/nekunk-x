@@ -10,3 +10,7 @@
 .font-poppins {
   font-family: 'Poppins', sans-serif;
 }
+
+.bgtop {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #FFFFFF 100%), linear-gradient(90deg, #1A365D 0%, #63171B 100%);
+}

@@ -10,6 +10,7 @@ import {
   Button,
   Spacer,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import {
@@ -27,6 +28,8 @@ export default function Delete() {
   const [Programs, setPrograms] = useState([]);
   const [SelectedProg, setSelectedProg] = useState("1");
 
+  const toast = useToast();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   async function deleteSelected() {
@@ -38,7 +41,23 @@ export default function Delete() {
     );
     console.log(resp);
     if (resp.status == 200) {
-      alert("Sikeres törlés!");
+      toast({
+        title: "Sikeres törlés",
+        description:
+          "Sikeresen törölted a programot! A mégsem gombbal visszatérhetsz a főoldalra.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "Hiba",
+        description:
+          "Hiba történt a program törlése közben! Kérlek, próbáld újra!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
     }
   }
 
@@ -76,12 +95,12 @@ export default function Delete() {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
+
       <Top name="Program törlése"></Top>
-      <Box w={"100vw"} h={"10vh"} bgGradient="linear(to-r, red.900, blue.900)">
+      <Box w={"100vw"} h={"15vh"} className="bgtop">
         <Flex
           w={"100%"}
           h={"100%"}
-          bgGradient={"linear(to-b, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))"}
           justify={"flex-start"}
           align={"center"}
           pl={"2vw"}
@@ -103,26 +122,27 @@ export default function Delete() {
       </Box>
       <Flex
         w={"100vw"}
-        minH={"90vh"}
+        minH={"85vh"}
         direction={"column"}
         justify={"flex-start"}
         align={"flex-start"}
-        bgGradient="linear(to-r, red.900, blue.900)"
-        className="text-white gap-2"
+        bgColor="white"
+        className="text-black gap-2"
         pl={"10vw"}
         pr={"10vw"}
         pt={"5vh"}
         pb={"10vh"}
       >
         <Heading>Program törlése</Heading>
-        <Text mt="1" color={"gray.200"}>
+        <Text mt="1" color={"gray.900"}>
           Amennyiben lejárt egy lehetőség a weboldalunkon, itt törölheted azt.
           <strong> Vigyázz, nagy a felelősség!</strong>
         </Text>
         {Programs.length > 0 ? (
           <Box
             w={"100%"}
-            bgColor="rgba(0, 0, 0, 0.4)"
+            bgColor="white"
+            className="shadow-2xl shadow-red-900/60"
             rounded={20}
             pl={"5"}
             pr="5"
@@ -149,7 +169,7 @@ export default function Delete() {
               <Button onClick={onOpen} colorScheme="red">
                 Kijelölt program törlése
               </Button>
-              <Link href="/">
+              <Link href="/dashboard">
                 <Button ml="3" colorScheme="grey" variant={"outline"}>
                   Mégse
                 </Button>
