@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import Panni from "../../public/panni.jpg";
-import Bogi from "../../public/bogi.jpg";
+import Szonja from "../../public/Szonja.jpg";
 import Barni from "../../public/Barni.jpg";
 
 export default function Munkatársak() {
   return (
-    <div className="bg-blue-900 bg-opacity-50">
+    <div>
       <div className="w-full flex justify-center pt-8">
         <h1 className="fotn-poppins text-xl font-bold">A jövő generációja</h1>
       </div>
@@ -23,22 +22,22 @@ export default function Munkatársak() {
             <h1 className="poppins font-extrabold text-lg">Gőz Barnabás</h1>
             <p className="text-justify">
               A weboldal fejlesztése közben arra jutottam, hogy képtelen vagyok
-              magamról ismertető szöveget írni sajnos. Ilyen szuper
-              képességekkel csatlakoztam 2022 nyarán a Nekünk X szervezői
-              csapatába. Az eddig elmúlt időszakban az weboldal fejlesztésével
-              foglalkoztam, melynek végterméke az az oldal, amit most
-              (remélhetőleg a nyilvánossá tétel után) magad előtt látsz.
-              Szerencsére nekem még nem nyomja hátamat a kötelező 50 óra
-              megszerzése, hiszen idén (2022/2023-ban) 8. osztályos vagyok, de a
-              Nekünk X-nek köszönhetően már az osztálytársaim is
-              előredolgozhatnak és elkezdhetik a közösségi munkát.
+              magamról ismertető szöveget írni sajnos. Ilyen szuperképességekkel
+              csatlakoztam 2022 nyarán a Nekünk X szervezői csapatába. Az eddig
+              elmúlt időszakban az weboldal fejlesztésével foglalkoztam, melynek
+              végterméke az az oldal, amit most (remélhetőleg a nyilvánossá
+              tétel után) magad előtt látsz. Szerencsére nekem még nem nyomja
+              hátamat a kötelező 50 óra megszerzése, hiszen idén (2022/2023-ban)
+              8. osztályos vagyok, de a Nekünk X-nek köszönhetően már az
+              osztálytársaim is előredolgozhatnak és elkezdhetik a közösségi
+              munkát.
             </p>
           </div>
         </div>
         <div className="lg:w-1/2 w-full flex lg:flex-row flex-col lg:justify-evenly justify-start lg:items-start items-center">
           <div className="lg:w-1/2 w-full">
             <Image
-              src={Bogi}
+              src={Szonja}
               alt="Egy portré kép Dámosy Anna (Panni)ról"
               className="rounded-md"
             ></Image>
@@ -52,7 +51,8 @@ export default function Munkatársak() {
               összefogás nélkül nem egyszerű. Nagyon örülök, hogy Bogiék
               segítségével ennyi új élményben lehetett részem, és remélem
               sokaknak tudunk még örömteli programokkal segíteni az IKSz órák
-              összegyűjtése közben.
+              összegyűjtése közben. A szervezeten belül az arculat fejlesztése a
+              fő feladatom.
             </p>
           </div>
         </div>

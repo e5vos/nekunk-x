@@ -1,7 +1,15 @@
 import Top from "../components/top";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Link from "next/link";
-import { Flex, Box, Text, Heading, Spacer, Button } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Text,
+  Heading,
+  Spacer,
+  Button,
+  useToast,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import {
   Modal,
@@ -19,6 +27,8 @@ import { UserButton, useUser } from "@clerk/nextjs";
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { user } = useUser();
+
+  const toast = useToast();
 
   useEffect(() => {
     if (user.firstName !== "Barnabás" && user.lastName !== "Gőz") {
@@ -107,18 +117,27 @@ export default function Home() {
             Programok
           </Heading>
           <Flex className="gap-2" wrap={"wrap"}>
-            <Link href="/edit" passHref>
-              <div className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-pointer">
-                <div className="flex justify-start gap-1">
-                  <h1 className="font-bold text-lg">Szerkesztése</h1>
-                </div>
-                <p>
-                  Van egy hibás lehetőség az
-                  <br />
-                  oldalon? Hát kattints ide!
-                </p>
+            <div
+              onClick={() => {
+                toast({
+                  title: "A programok szerkesztése még nem elérhető.",
+                  description: "A fejlesztés még folyamatban van.",
+                  status: "warning",
+                  duration: 9000,
+                  isClosable: false,
+                });
+              }}
+              className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-pointer"
+            >
+              <div className="flex justify-start gap-1">
+                <h1 className="font-bold text-lg">Szerkesztése</h1>
               </div>
-            </Link>
+              <p>
+                Van egy hibás lehetőség az
+                <br />
+                oldalon? Hát kattints ide!
+              </p>
+            </div>
             <Link href="/add" passHref>
               <div className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-pointer">
                 <div className="flex justify-start gap-1">

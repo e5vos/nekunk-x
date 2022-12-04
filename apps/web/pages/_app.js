@@ -1,6 +1,14 @@
 import "../styles/globals.css";
 import Script from "next/script";
 import Footer from "../components/footer";
+import "@fontsource/poppins/900.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/inter/900.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
 
 function MyApp({ Component, pageProps }) {
   return (

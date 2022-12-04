@@ -15,7 +15,7 @@ export default function GeneralNekunkX() {
         />
       </div>
       <div className="lg:w-2/3 w-full lg:pr-20">
-        <h1 className="text-4xl font-poppins font-semibold text-gray-900">
+        <h1 className="text-4xl font-poppins font-bold text-gray-900 pb-2">
           Mi a célunk?
         </h1>
         <p>

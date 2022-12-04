@@ -30,7 +30,7 @@ export default function Listing({ Options }) {
       ) : (
         <div className="w-full h-auto flex flex-col justify-center items-center pt-11 pb-48">
           <InfinitySpin color="#000000" width="200"></InfinitySpin>
-          <h1>Lehetőségek betöltése folyamatban...</h1>
+          <h1>Már élesztjük a szervert! Egy-két pillanat...</h1>
         </div>
       )}
       {Shown && <Program setShown={setShown} data={Shown}></Program>}

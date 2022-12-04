@@ -12,6 +12,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/inter": "^4.5.14",
+    "@fontsource/poppins": "^4.5.10",
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
     "axios": "^1.2.0",
