@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Top from "../components/top";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useAuth } from "@clerk/nextjs";
 import {
   Box,
   Flex,
@@ -29,6 +29,7 @@ export default function Delete() {
   const [SelectedProg, setSelectedProg] = useState("1");
 
   const toast = useToast();
+  const { getToken } = useAuth();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -37,7 +38,12 @@ export default function Delete() {
     const deleteinfo = { programID: SelectedProg };
     const resp = await axios.post(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/modifyData/deleteProgram`,
-      deleteinfo
+      deleteinfo,
+      {
+        headers: {
+          Authorization: `Bearer ${await getToken()}`,
+        },
+      }
     );
     console.log(resp);
     if (resp.status == 200) {

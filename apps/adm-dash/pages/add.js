@@ -14,7 +14,7 @@ import Script from "next/script";
 import Image from "next/image";
 import Link from "next/link";
 import Top from "../components/top";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useAuth } from "@clerk/nextjs";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -38,6 +38,7 @@ export default function Add() {
   const [RegisterLink, setRegisterLink] = useState("");
 
   const toast = useToast();
+  const { getToken } = useAuth();
 
   async function saveProgram() {
     // type, image, title, description, contactName, contactEmail, contactPhone, registerLink
@@ -58,6 +59,11 @@ export default function Add() {
         contactEmail: Email,
         contactPhone: Phone,
         registerLink: RegisterLink,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${await getToken()}`,
+        },
       }
     );
 

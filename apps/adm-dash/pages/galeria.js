@@ -3,7 +3,7 @@ import Image from "next/image";
 import axios from "axios";
 import Script from "next/script";
 import Top from "../components/top";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, useUser, useAuth } from "@clerk/nextjs";
 import {
   Box,
   Flex,
@@ -18,12 +18,13 @@ import {
 import Link from "next/link";
 
 export default function Galeria() {
-  const toast = useToast();
   const [ProgramName, setProgramName] = useState("");
   const [ShowNextStep, setShowNextStep] = useState(false);
   const [Pics, setPics] = useState([]);
 
   const { user } = useUser();
+  const { getToken } = useAuth();
+  const toast = useToast();
 
   async function savePhotos() {
     if (ProgramName == "") {
@@ -49,7 +50,12 @@ export default function Galeria() {
     const toSend = { title: ProgramName, pictures: Pics };
     const resp = await axios.post(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/modifyData/galeria`,
-      toSend
+      toSend,
+      {
+        headers: {
+          Authorization: `Bearer ${await getToken()}`,
+        },
+      }
     );
     if (resp.status == 200) {
       toast({

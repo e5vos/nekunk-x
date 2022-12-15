@@ -127,7 +127,7 @@ export default function Home() {
                   isClosable: false,
                 });
               }}
-              className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-pointer"
+              className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-not-allowed bg-gray-300 opacity-60"
             >
               <div className="flex justify-start gap-1">
                 <h1 className="font-bold text-lg">Szerkesztése</h1>

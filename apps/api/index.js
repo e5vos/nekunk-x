@@ -3,16 +3,26 @@ const app = express();
 const cors = require("cors");
 const signale = require("signale");
 const mongoose = require("mongoose");
-require("dotenv").config();
+require("dotenv/config");
+const clerk = require("@clerk/clerk-sdk-node");
 
 const db = mongoose.connection;
 const getData = require("./routes/getData");
 const modifyData = require("./routes/modifyData");
+const ClerkExpressWithAuth = clerk.ClerkExpressWithAuth;
 
 app.use(cors());
 app.use(express.json({ extended: false }));
 app.use("/getData", getData);
-app.use("/modifyData", modifyData);
+app.use(
+  "/modifyData",
+  ClerkExpressWithAuth(),
+  (req, res) => {
+    signale.fatal("Hibás hitelesítés! (modifyData)");
+    res.json(req.auth);
+  },
+  modifyData
+);
 
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true });
 db.on("error", console.error.bind(console, "connection error:"));
