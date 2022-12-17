@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import Script from "next/script";
 import Footer from "../components/footer";
-import { PopUpBanner } from "../components/popupbanner";
+import { PopUpBanner } from "../components/popupbanner.jsx";
 import "@fontsource/poppins/900.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/400.css";

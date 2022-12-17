@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import Program from "./program";
 import { InfinitySpin } from "react-loader-spinner";
+import {
+  Card,
+  Heading,
+  CardBody,
+  CardFooter,
+  Divider,
+  Button,
+  Image,
+} from "@chakra-ui/react";
 
 export default function Listing({ Options }) {
   const [Shown, setShown] = useState(false);
@@ -9,22 +18,31 @@ export default function Listing({ Options }) {
       {Options.length > 0 ? (
         <>
           {Options.map((option, index) => (
-            <div
-              key={option._id}
-              className="lg:w-1/3 w-full h-auto"
-              onClick={() => setShown(option)}
-            >
-              <div className="cursor-pointer w-full h-auto rounded-md border-2 border-gray-200 overflow-hidden">
-                <div
-                  key={option._id}
-                  className="cursor-pointer w-full h-auto bg-cover pt-32 pb-32 pl-14 pr-14"
-                  style={{ backgroundImage: `url('${option.image}')` }}
-                ></div>
-                <h1 className="text-black p-2 text-center font-semibold pl-4 pr-4 text-lg">
+            <Card maxW="sm">
+              <CardBody>
+                <Image
+                  src={option.image}
+                  alt="Kép a programról"
+                  borderRadius="lg"
+                  height={250}
+                  width={400}
+                  objectFit="cover"
+                />
+                <Heading mt={6} size="md">
                   {option.title}
-                </h1>
-              </div>
-            </div>
+                </Heading>
+              </CardBody>
+              <Divider />
+              <CardFooter>
+                <Button
+                  variant="solid"
+                  colorScheme="blue"
+                  onClick={() => setShown(option)}
+                >
+                  Program részletei
+                </Button>
+              </CardFooter>
+            </Card>
           ))}
         </>
       ) : (

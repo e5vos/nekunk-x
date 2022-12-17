@@ -10,8 +10,8 @@ export default function HomeBanner() {
       </h1>
       <br />
       <Link href="/sajat">
-        <button className=" p-2 font-poppins text-lg bg-blue-600 text-white rounded-3xl shadow-lg pl-8 pr-8">
-          Általunk szervezett lehetőségek
+        <button className=" p-2 font-poppins text-md lg:text-lg bg-blue-600 text-white rounded-3xl shadow-lg pl-8 pr-8">
+          Saját programjaink
         </button>
       </Link>
     </div>
