@@ -21,16 +21,6 @@ export default function NavigationBar({ pageTitle, currentPage }) {
         <title>{newPageTitle}</title>
       </Head>
       <div className="fixed top-0 z-40 bg-white font-poppins w-full h-auto">
-        <div className="bg-yellow-400 h-auto w-full flex justify-center p-2 text-center flex-col items-center">
-          <p>
-            Fejlesztőink jelenleg még az oldal befejezésén dolgoznak, így
-            kisebb-nagyobb hibák előfordulhatnak. A kellemetlenségekért előre is
-            elnézést kérünk!
-          </p>
-          <Link href="https://status.nekunk-x.ga">
-            <p className="underline decoration-wavy">Rendszerállapot</p>
-          </Link>
-        </div>
         <div className="w-full h-auto border-b-2 pr-4 pl-4 pb-0 flex justify-between bg-white font-poppins">
           <div className="flex justify-start items-center gap-4">
             <Link href="/">

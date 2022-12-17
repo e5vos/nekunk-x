@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Script from "next/script";
 import Footer from "../components/footer";
+import { PopUpBanner } from "../components/popupbanner";
 import "@fontsource/poppins/900.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/400.css";
@@ -9,10 +10,11 @@ import "@fontsource/inter/900.css";
 import "@fontsource/inter/700.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <ChakraProvider>
       <div id="fb-root"></div>
 
       <div id="fb-customer-chat" className="fb-customerchat"></div>
@@ -44,9 +46,10 @@ function MyApp({ Component, pageProps }) {
         async="async"
         type="text/javascript"
       />
+      <PopUpBanner />
       <Component {...pageProps} />
       <Footer></Footer>
-    </>
+    </ChakraProvider>
   );
 }
 
