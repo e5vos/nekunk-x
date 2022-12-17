@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const signale = require("signale");
+require("dotenv/config");
+const { ClerkExpressRequireAuth } = require("@clerk/clerk-sdk-node");
 
 const Program = require("../models/programSchema");
 const Galeria = require("../models/galeriaSchema");
+
+router.use(ClerkExpressRequireAuth());
 
 router.post("/addProgram", async (req, res) => {
   // type, image, title, description, contactName, contactEmail, contactPhone, registerLink
@@ -66,6 +70,11 @@ router.post("/deleteProgram", async (req, res) => {
   } catch (err) {
     signale.fatal("Program törlése sikertelen.", err);
   }
+});
+
+router.use((err, req, res, next) => {
+  signale.fatal("Jogosulatlan próbálkozás", err.stack);
+  res.status(401).send("Unauthenticated!");
 });
 
 module.exports = router;
