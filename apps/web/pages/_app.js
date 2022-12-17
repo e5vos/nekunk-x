@@ -38,6 +38,12 @@ function MyApp({ Component, pageProps }) {
         }(document, 'script', 'facebook-jssdk'));
     `}
       </Script>
+      <Script
+        src="https://betteruptime.com/widgets/announcement.js"
+        dataId="152527"
+        async="async"
+        type="text/javascript"
+      />
       <Component {...pageProps} />
       <Footer></Footer>
     </>
