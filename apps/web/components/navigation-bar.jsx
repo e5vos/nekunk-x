@@ -33,7 +33,7 @@ export default function NavigationBar({ pageTitle, currentPage }) {
               />
             </Link>
           </div>
-          <h2 className="lg:hidden font-poppins mt-auto mb-auto">
+          <h2 className="lg:hidden font-poppins mt-auto mb-auto text-center">
             {pageTitle}
           </h2>
           <button

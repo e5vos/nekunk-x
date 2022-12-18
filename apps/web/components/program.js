@@ -14,11 +14,12 @@ export default function Program({ data, setShown }) {
         className="lg:w-1/2 relative overflow-hidden w-full bg-white border-2 shadow-lg rounded-lg mt-2 pt-0"
         style={{ minWidth: "50%" }}
       >
-        <CloseButton
-          className="absolute top-2 right-2"
+        <button
+          className="absolute z-50 w-8 h-8 bg-white right-2 top-2 rounded-md flex justify-center items-center"
           onClick={() => setShown(false)}
-          as={Button}
-        ></CloseButton>
+        >
+          <CloseIcon></CloseIcon>
+        </button>
         <div
           style={{ backgroundImage: `url('${data.image}')` }}
           className="pl-9 pr-9 pt-36 pb-36 bg-cover mt-0"
@@ -30,43 +31,45 @@ export default function Program({ data, setShown }) {
           <h1 className="text-lg font-semibold mt-2">Kapcsolat:</h1>
           <div className="flex justify-start gap-2 flex-wrap">
             {data.contactName ? (
-              <div className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg">
+              <Button colorScheme={"blue"} gap={2}>
                 <ContactPageIcon />
                 <h1>{data.contactName}</h1>
-              </div>
+              </Button>
             ) : (
               <></>
             )}
             {data.contactEmail ? (
-              <div
-                className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
+              <Button
+                colorScheme={"blue"}
+                gap={2}
                 onClick={() =>
                   (window.location = `mailto:${data.contactEmail}`)
                 }
               >
                 <EmailIcon />
                 <h1>{data.contactEmail}</h1>
-              </div>
+              </Button>
             ) : (
               <></>
             )}
             {data.contactPhone ? (
-              <div
-                className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
+              <Button
+                colorScheme={"blue"}
+                gap={2}
                 onClick={() => (window.location = `tel:${data.contactPhone}`)}
               >
                 <PhoneIcon />
                 <h1>{data.contactPhone}</h1>
-              </div>
+              </Button>
             ) : (
               <></>
             )}
             {data.registerLink ? (
               <Link href={data.registerLink}>
-                <div className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg cursor-pointer">
+                <Button colorScheme={"blue"} gap={2}>
                   <NoteAddIcon />
                   <h1>{data.registerLink}</h1>
-                </div>
+                </Button>
               </Link>
             ) : (
               <></>
