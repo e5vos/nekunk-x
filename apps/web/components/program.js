@@ -5,6 +5,7 @@ import ContactPageIcon from "@mui/icons-material/ContactPage";
 import EmailIcon from "@mui/icons-material/Email";
 import CloseIcon from "@mui/icons-material/Close";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import { Button, CloseButton } from "@chakra-ui/react";
 
 export default function Program({ data, setShown }) {
   return (
@@ -13,12 +14,11 @@ export default function Program({ data, setShown }) {
         className="lg:w-1/2 relative overflow-hidden w-full bg-white border-2 shadow-lg rounded-lg mt-2 pt-0"
         style={{ minWidth: "50%" }}
       >
-        <button
+        <CloseButton
+          className="absolute top-2 right-2"
           onClick={() => setShown(false)}
-          className="absolute z-50 w-8 h-8 bg-white right-2 top-2 rounded-md flex justify-center items-center"
-        >
-          <CloseIcon></CloseIcon>
-        </button>
+          as={Button}
+        ></CloseButton>
         <div
           style={{ backgroundImage: `url('${data.image}')` }}
           className="pl-9 pr-9 pt-36 pb-36 bg-cover mt-0"
@@ -30,7 +30,7 @@ export default function Program({ data, setShown }) {
           <h1 className="text-lg font-semibold mt-2">Kapcsolat:</h1>
           <div className="flex justify-start gap-2 flex-wrap">
             {data.contactName ? (
-              <div className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg">
+              <div className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg">
                 <ContactPageIcon />
                 <h1>{data.contactName}</h1>
               </div>
@@ -39,7 +39,7 @@ export default function Program({ data, setShown }) {
             )}
             {data.contactEmail ? (
               <div
-                className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
+                className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
                 onClick={() =>
                   (window.location = `mailto:${data.contactEmail}`)
                 }
@@ -52,7 +52,7 @@ export default function Program({ data, setShown }) {
             )}
             {data.contactPhone ? (
               <div
-                className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
+                className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg cursor-pointer"
                 onClick={() => (window.location = `tel:${data.contactPhone}`)}
               >
                 <PhoneIcon />
@@ -63,7 +63,7 @@ export default function Program({ data, setShown }) {
             )}
             {data.registerLink ? (
               <Link href={data.registerLink}>
-                <div className="bg-blue-900 text-white bg-opacity-40 p-2 flex justify-start gap-1 rounded-lg cursor-pointer">
+                <div className="bg-blue-900 text-white bg-opacity-70 p-2 flex justify-start gap-1 rounded-lg cursor-pointer">
                   <NoteAddIcon />
                   <h1>{data.registerLink}</h1>
                 </div>
@@ -74,12 +74,9 @@ export default function Program({ data, setShown }) {
           </div>
         </div>
         <div className="flex justify-end mr-2 mb-2">
-          <button
-            onClick={() => setShown(false)}
-            className="border font-poppins text-gray-500 border-gray-400 bg-opacity-40 p-2 flex text-sm justify-center gap-1 rounded-lg cursor-pointer pr-8 pl-8"
-          >
+          <Button onClick={() => setShown(false)} colorScheme="blue">
             Bezárás
-          </button>
+          </Button>
         </div>
       </div>
     </div>

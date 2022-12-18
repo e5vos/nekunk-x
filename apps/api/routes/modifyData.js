@@ -33,10 +33,44 @@ router.post("/addProgram", async (req, res) => {
       registerLink: registerLink,
     });
     await newProgram.save();
-    signale.success("Állandó adatok mentése sikeres.");
+    signale.success("Program adatok mentése sikeres.");
     res.status(200).send("Sikeres mentés!");
   } catch (err) {
-    signale.error("Állandó adatok mentése sikertelen.", err);
+    signale.error("Program adatok mentése sikertelen.", err);
+  }
+});
+
+router.post("/modifyProgram", async (req, res) => {
+  // programID, type, image, title, description, contactName, contactEmail, contactPhone, registerLink
+  try {
+    const {
+      programID,
+      type,
+      image,
+      title,
+      description,
+      contactName,
+      contactEmail,
+      contactPhone,
+      registerLink,
+    } = req.body;
+    await Program.updateOne(
+      { _id: programID },
+      {
+        type: type,
+        image: image,
+        title: title,
+        description: description,
+        contactName: contactName,
+        contactEmail: contactEmail,
+        contactPhone: contactPhone,
+        registerLink: registerLink,
+      }
+    );
+    signale.success("Program adatok módosítása sikeres.");
+    res.status(200).send("Sikeres módosítás!");
+  } catch (err) {
+    signale.error("Program adatok módosítása sikertelen.", err);
   }
 });
 

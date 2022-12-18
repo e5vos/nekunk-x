@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdatesRounded";
+import { Button } from "@chakra-ui/react";
 
 export default function HomeBanner() {
   return (
@@ -10,9 +10,7 @@ export default function HomeBanner() {
       </h1>
       <br />
       <Link href="/sajat">
-        <button className=" p-2 font-poppins text-md lg:text-lg bg-blue-600 text-white rounded-3xl shadow-lg pl-8 pr-8">
-          Saját programjaink
-        </button>
+        <Button colorScheme="blue">Saját programjaink</Button>
       </Link>
     </div>
   );

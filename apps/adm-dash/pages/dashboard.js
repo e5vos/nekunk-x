@@ -117,27 +117,18 @@ export default function Home() {
             Programok
           </Heading>
           <Flex className="gap-2" wrap={"wrap"}>
-            <div
-              onClick={() => {
-                toast({
-                  title: "A programok szerkesztése még nem elérhető.",
-                  description: "A fejlesztés még folyamatban van.",
-                  status: "warning",
-                  duration: 9000,
-                  isClosable: false,
-                });
-              }}
-              className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-not-allowed bg-gray-300 opacity-60"
-            >
-              <div className="flex justify-start gap-1">
-                <h1 className="font-bold text-lg">Szerkesztése</h1>
+            <Link href="/edit" passHref>
+              <div className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-pointer">
+                <div className="flex justify-start gap-1">
+                  <h1 className="font-bold text-lg">Szerkesztése</h1>
+                </div>
+                <p>
+                  Van egy hibás lehetőség az
+                  <br />
+                  oldalon? Hát kattints ide!
+                </p>
               </div>
-              <p>
-                Van egy hibás lehetőség az
-                <br />
-                oldalon? Hát kattints ide!
-              </p>
-            </div>
+            </Link>
             <Link href="/add" passHref>
               <div className="pl-5 pr-5 pt-5 pb-5 border-2 border-gray-400 rounded-2xl cursor-pointer">
                 <div className="flex justify-start gap-1">

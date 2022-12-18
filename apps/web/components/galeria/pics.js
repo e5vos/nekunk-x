@@ -1,6 +1,14 @@
 import React, { useState, useCallback } from "react";
-import Image from "next/image";
 import ImageViewer from "react-simple-image-viewer";
+import {
+  Card,
+  Heading,
+  CardBody,
+  CardFooter,
+  Divider,
+  Button,
+  Image,
+} from "@chakra-ui/react";
 
 export default function Pics({ data, key, element }) {
   const [ViewerImage, setViewerImage] = useState(0);
@@ -17,19 +25,34 @@ export default function Pics({ data, key, element }) {
   };
 
   return (
-    <div className="lg:w-2/5 w-full border-2 rounded-md h-auto text-center overflow-hidden cursor-pointer">
-      {element ? (
-        <div
-          className="w-full h-80 bg-cover"
-          style={{ backgroundImage: `url(${element.pictures[0]})` }}
-          onClick={() => openImageViewer(0)}
-        ></div>
-      ) : (
-        <></>
+    <>
+      {element && (
+        <Card maxW="sm">
+          <CardBody>
+            <Image
+              src={element.pictures[0]}
+              alt="Kép a programról"
+              borderRadius="lg"
+              height={250}
+              width={400}
+              objectFit="cover"
+            />
+            <Heading mt={6} size="md">
+              {element.title}
+            </Heading>
+          </CardBody>
+          <Divider />
+          <CardFooter>
+            <Button
+              variant="solid"
+              colorScheme="blue"
+              onClick={() => setViewerOpen(true)}
+            >
+              Program részletei
+            </Button>
+          </CardFooter>
+        </Card>
       )}
-      <h1 className="font-poppins text-black text-lg p-2 font-semibold mb-2 mt-2">
-        {element && element.title}
-      </h1>
       {ViewerOpen && (
         <ImageViewer
           src={element.pictures}
@@ -40,6 +63,6 @@ export default function Pics({ data, key, element }) {
           className="z-50"
         />
       )}
-    </div>
+    </>
   );
 }

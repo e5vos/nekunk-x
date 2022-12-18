@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@chakra-ui/react";
 import IMG_6346 from "../../public/IMG_6346.jpg";
 
 export default function WhoWeAreBanner() {
@@ -21,9 +22,9 @@ export default function WhoWeAreBanner() {
         </p>
         <br />
         <Link href="/rolunk">
-          <button className="w-full text-center border-2 border-gray-900 text-gray-900 p-2 pl-16 pr-16 rounded-md">
+          <Button width="100%" variant="outline">
             Rólunk
-          </button>
+          </Button>
         </Link>
       </div>
       <div className="lg:w-1/2 w-full flex lg:justify-start justify-center">

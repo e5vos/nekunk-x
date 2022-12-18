@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ESP_9869 from "../../public/ESP_9869.jpg";
+import { Button } from "@chakra-ui/react";
 
 export default function EmailSubscribtion() {
   return (
@@ -26,9 +27,9 @@ export default function EmailSubscribtion() {
         </p>
         <br />
         <Link href="https://978bfb97.sibforms.com/serve/MUIEAJjbE6qw0F1slYAE5dQaS909l43W0OjJktRYa6ESaOOQPfIOrwy2Qf3wa9n8IzYBfjfoA7-1XRTj0IIFCmYrle10vOxbZbcwKcriuVPx-PMQNltSZ8FEXxVfrgmHz9cq5hONQRlXAWOVrteef-NCn9kkqlRLaukGPppwZNh3sHAAGiNCW3WV7DgKF6_K_OpSg5AcfYrOjWhk">
-          <button className="w-full text-center border-2 border-gray-900 text-gray-900 p-2 pl-16 pr-16 rounded-md">
-            Feliratkozom!
-          </button>
+          <Button variant={"outline"} w="100%">
+            Feliratkozás
+          </Button>
         </Link>
       </div>
     </div>
