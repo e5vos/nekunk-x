@@ -38,7 +38,7 @@ export default function Munkatársak() {
           <div className="lg:w-1/2 w-full">
             <Image
               src={Szonja}
-              alt="Egy portré kép Dámosy Anna (Panni)ról"
+              alt="Egy portré kép Papik Szonjáról"
               className="rounded-md"
             ></Image>
           </div>
