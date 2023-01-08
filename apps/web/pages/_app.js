@@ -46,7 +46,6 @@ function MyApp({ Component, pageProps }) {
         async="async"
         type="text/javascript"
       />
-      <PopUpBanner />
       <Component {...pageProps} />
       <Footer></Footer>
     </ChakraProvider>
