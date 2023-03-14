@@ -14,6 +14,14 @@ app.use(express.json({ extended: false }));
 app.use("/getData", getData);
 app.use("/modifyData", modifyData);
 
+app.get("/checkStatus", (req, res) => {
+  if (db.readyState == 1) {
+    res.status(200).send({ status: "ok" });
+  } else {
+    res.status(200).send({ status: "nodb" });
+  }
+});
+
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true });
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
