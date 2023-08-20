@@ -152,7 +152,7 @@ export default function Galeria() {
             className="rounded-xl mr-4"
           />
           <Heading fontSize={20} color="white">
-            Nekünk X Admin Dashboard
+            Nekünk X - Weboldalszerkesztő
           </Heading>
           <Spacer />
 
@@ -212,7 +212,7 @@ export default function Galeria() {
             >
               Mentés és továbblépés
             </Button>
-            <Link href="/dashboard">
+            <Link href="/">
               <Button ml="2" variant={"outline"} colorScheme="grey">
                 Mégsem
               </Button>

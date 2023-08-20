@@ -119,7 +119,7 @@ export default function Delete() {
             className="rounded-xl mr-4"
           />
           <Heading fontSize={20} color="white">
-            Nekünk X Admin Dashboard
+            Nekünk X - Weboldalszerkesztő
           </Heading>
           <Spacer />
 
@@ -175,7 +175,7 @@ export default function Delete() {
               <Button onClick={onOpen} colorScheme="red">
                 Kijelölt program törlése
               </Button>
-              <Link href="/dashboard">
+              <Link href="/">
                 <Button ml="3" colorScheme="grey" variant={"outline"}>
                   Mégse
                 </Button>

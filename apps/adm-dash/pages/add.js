@@ -159,7 +159,7 @@ export default function Add() {
             className="rounded-xl mr-4"
           />
           <Heading fontSize={20} color="white">
-            Nekünk X Admin Dashboard
+            Nekünk X - Weboldalszerkesztő
           </Heading>
           <Spacer />
 
@@ -222,7 +222,7 @@ export default function Add() {
             >
               Tovább
             </Button>
-            <Link href="/dashboard">
+            <Link href="/">
               <Button variant={"outline"} mt={2} ml={2}>
                 Mégsem
               </Button>

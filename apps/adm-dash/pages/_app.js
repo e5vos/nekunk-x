@@ -21,18 +21,6 @@ function MyApp({ Component, pageProps }) {
               if (user.publicMetadata.role === "admin") {
                 return (
                   <>
-                    <div className="bg-yellow-400 h-auto w-full flex justify-center p-2 text-center flex-col items-center">
-                      <p>
-                        Fejlesztőink jelenleg még az oldal befejezésén
-                        dolgoznak, így kisebb-nagyobb hibák előfordulhatnak. A
-                        kellemetlenségekért előre is elnézést kérünk!
-                      </p>
-                      <Link href="https://status.nekunk-x.ga">
-                        <p className="underline decoration-wavy">
-                          Rendszerállapot
-                        </p>
-                      </Link>
-                    </div>
                     <Component {...pageProps} />
                   </>
                 );
