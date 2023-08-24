@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Szonja from "../../public/szonja.jpg";
+import Szonja from "../../public/szonjaNew.jpg";
 import Barni from "../../public/Barni.jpg";
 import { Highlight } from "@chakra-ui/react";
 
