@@ -27,12 +27,12 @@ export default function Pics({ data, key, element }) {
   return (
     <>
       {element && (
-        <Card maxW="sm">
+        <Card maxW="sm" rounded={"2xl"}>
           <CardBody>
             <Image
               src={element.pictures[0]}
               alt="Kép a programról"
-              borderRadius="lg"
+              borderRadius="xl"
               height={250}
               width={400}
               objectFit="cover"
@@ -41,14 +41,17 @@ export default function Pics({ data, key, element }) {
               {element.title}
             </Heading>
           </CardBody>
-          <Divider />
+          <Divider color={"gray.200"} />
           <CardFooter>
             <Button
               variant="solid"
-              colorScheme="blue"
+              colorScheme="purple"
               onClick={() => setViewerOpen(true)}
+              px={8}
+              rounded={"full"}
+              ml={"auto"}
             >
-              Program részletei
+              Képek megnyitása →
             </Button>
           </CardFooter>
         </Card>

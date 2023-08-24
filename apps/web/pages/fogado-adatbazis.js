@@ -7,7 +7,7 @@ export default function FogadoAdatbazis() {
   return (
     <>
       <NavigationBar
-        pageTitle="Fogadó szervezetek adatbázisa"
+        pageTitle="Fogadószervezetek adatbázisa"
         currentPage="fogado-adatbazis"
       ></NavigationBar>
       <Banner />

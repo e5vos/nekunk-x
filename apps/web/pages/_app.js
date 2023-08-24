@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 import Script from "next/script";
 import Footer from "../components/footer";
-import { PopUpBanner } from "../components/popupbanner.jsx";
 import "@fontsource/poppins/900.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/400.css";
@@ -40,12 +39,6 @@ function MyApp({ Component, pageProps }) {
         }(document, 'script', 'facebook-jssdk'));
     `}
       </Script>
-      <Script
-        src="https://betteruptime.com/widgets/announcement.js"
-        dataId="152527"
-        async="async"
-        type="text/javascript"
-      />
       <Component {...pageProps} />
       <Footer></Footer>
     </ChakraProvider>

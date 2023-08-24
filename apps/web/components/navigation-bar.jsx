@@ -7,6 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
 import Logo from "../public/notext.jpg";
+import { Text } from "@chakra-ui/react";
 
 export default function NavigationBar({ pageTitle, currentPage }) {
   const [ShownOther, setShownOther] = useState(false);
@@ -33,7 +34,7 @@ export default function NavigationBar({ pageTitle, currentPage }) {
               />
             </Link>
           </div>
-          <h2 className="lg:hidden font-poppins mt-auto mb-auto text-center">
+          <h2 className="lg:hidden font-poppins font-semibold mt-auto mb-auto text-center">
             {pageTitle}
           </h2>
           <button
@@ -55,46 +56,17 @@ export default function NavigationBar({ pageTitle, currentPage }) {
               </p>
             </Link>
             <div>
-              <button onClick={() => setShownOptions(!ShownOptions)}>
-                Lehetőségeink
-              </button>
-              {ShownOptions && (
-                <div className="absolute z-20 bg-white p-4 rounded-b-md border-2 border-t-0 flex flex-col gap-2">
-                  <Link href="/allando">
-                    <p
-                      className={
-                        currentPage == "allando"
-                          ? "font-semibold tracking-wide"
-                          : "tracking-wide"
-                      }
-                    >
-                      Állandó lehetőségek
-                    </p>
-                  </Link>
-                  <Link href="/idoszakos">
-                    <p
-                      className={
-                        currentPage == "idoszakos"
-                          ? "font-semibold tracking-wide"
-                          : "tracking-wide"
-                      }
-                    >
-                      Időszakos lehetőségek
-                    </p>
-                  </Link>
-                  <Link href="/sajat">
-                    <p
-                      className={
-                        currentPage == "sajat"
-                          ? "font-semibold tracking-wide"
-                          : "tracking-wide"
-                      }
-                    >
-                      Általunk szervezett lehetőségek
-                    </p>
-                  </Link>
-                </div>
-              )}
+              <Link href="/programok">
+                <p
+                  className={
+                    currentPage == "programok"
+                      ? "font-semibold tracking-wide"
+                      : "tracking-wide"
+                  }
+                >
+                  Programok
+                </p>
+              </Link>
             </div>
 
             <Link href="/rolunk">
@@ -114,17 +86,6 @@ export default function NavigationBar({ pageTitle, currentPage }) {
               </button>
               {ShownOther && (
                 <div className="absolute z-20 bg-white p-4 rounded-b-md border-2 border-t-0  flex flex-col gap-2">
-                  <Link href="https://978bfb97.sibforms.com/serve/MUIEAJjbE6qw0F1slYAE5dQaS909l43W0OjJktRYa6ESaOOQPfIOrwy2Qf3wa9n8IzYBfjfoA7-1XRTj0IIFCmYrle10vOxbZbcwKcriuVPx-PMQNltSZ8FEXxVfrgmHz9cq5hONQRlXAWOVrteef-NCn9kkqlRLaukGPppwZNh3sHAAGiNCW3WV7DgKF6_K_OpSg5AcfYrOjWhk">
-                    <p
-                      className={
-                        currentPage == "hirlevel"
-                          ? "font-semibold tracking-wide"
-                          : "tracking-wide"
-                      }
-                    >
-                      Hírlevél
-                    </p>
-                  </Link>
                   <Link href="/galeria">
                     <p
                       className={
@@ -144,7 +105,7 @@ export default function NavigationBar({ pageTitle, currentPage }) {
                           : "tracking-wide"
                       }
                     >
-                      Gyakran ismételt kérdések
+                      Gyakori kérdések
                     </p>
                   </Link>
                   <Link href="/szerzodeskotes-menete">
@@ -195,49 +156,14 @@ export default function NavigationBar({ pageTitle, currentPage }) {
                 Kezdőlap
               </p>
             </Link>
-            <div className="bg-gray-100 flex flex-col items-center rounded-md">
-              <button
-                style={ShownOptions ? { fontWeight: "bold" } : {}}
+            <Link href="/programok">
+              <p
+                style={currentPage == "programok" ? { fontWeight: "bold" } : {}}
                 className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
-                onClick={() => setShownOptions(!ShownOptions)}
               >
-                Lehetőségeink
-              </button>
-              {ShownOptions && (
-                <>
-                  <Link href="/allando">
-                    <p
-                      style={
-                        currentPage == "allando" ? { fontWeight: "bold" } : {}
-                      }
-                      className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
-                    >
-                      Állandó lehetőségek
-                    </p>
-                  </Link>
-                  <Link href="/idoszakos">
-                    <p
-                      style={
-                        currentPage == "idoszakos" ? { fontWeight: "bold" } : {}
-                      }
-                      className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
-                    >
-                      Időszakos lehetőségek
-                    </p>
-                  </Link>
-                  <Link href="/sajat">
-                    <p
-                      style={
-                        currentPage == "sajat" ? { fontWeight: "bold" } : {}
-                      }
-                      className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
-                    >
-                      Általunk szervezett lehetőségek
-                    </p>
-                  </Link>
-                </>
-              )}
-            </div>
+                Programok
+              </p>
+            </Link>
 
             <Link href="/rolunk">
               <p
@@ -257,16 +183,6 @@ export default function NavigationBar({ pageTitle, currentPage }) {
               </button>
               {ShownOther && (
                 <>
-                  <Link href="https://978bfb97.sibforms.com/serve/MUIEAJjbE6qw0F1slYAE5dQaS909l43W0OjJktRYa6ESaOOQPfIOrwy2Qf3wa9n8IzYBfjfoA7-1XRTj0IIFCmYrle10vOxbZbcwKcriuVPx-PMQNltSZ8FEXxVfrgmHz9cq5hONQRlXAWOVrteef-NCn9kkqlRLaukGPppwZNh3sHAAGiNCW3WV7DgKF6_K_OpSg5AcfYrOjWhk">
-                    <p
-                      style={
-                        currentPage == "hirlevel" ? { fontWeight: "bold" } : {}
-                      }
-                      className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
-                    >
-                      Hírlevél
-                    </p>
-                  </Link>
                   <Link href="/galeria">
                     <p
                       style={
@@ -284,7 +200,7 @@ export default function NavigationBar({ pageTitle, currentPage }) {
                       }
                       className="tracking-wide bg-gray-100 p-2 pl-4 pr-4 rounded-md font-poppins text-lg"
                     >
-                      Gyakran ismételt kérdések
+                      Gyakori kérdések
                     </p>
                   </Link>
                   <Link href="/fogado-adatbazis">

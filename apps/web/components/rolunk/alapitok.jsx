@@ -2,12 +2,15 @@ import React from "react";
 import Image from "next/image";
 import Panni from "../../public/panni.jpg";
 import Bogi from "../../public/bogi.jpg";
+import { Heading, Highlight, Text } from "@chakra-ui/react";
 
 export default function Alapitok() {
   return (
-    <div className="bg-blue-900 bg-opacity-40">
+    <div className="bg-purple-900 bg-opacity-40">
       <div className="w-full flex justify-center pt-8">
-        <h1 className="fotn-poppins text-xl font-bold">Az Ötletgazdák</h1>
+        <Heading fontWeight={"extrabold"} fontFamily={"poppins"}>
+          Alapítók
+        </Heading>
       </div>
       <div className="w-full h-auto flex lg:flex-row flex-col items-center justify-center gap-8 lg:p-12 p-8">
         <div className="lg:w-1/2 w-full flex lg:flex-row flex-col lg:justify-evenly justify-start lg:items-start items-center">
@@ -15,12 +18,24 @@ export default function Alapitok() {
             <Image
               src={Panni}
               alt="Egy portré kép Dámosy Anna (Panni)ról"
-              className="rounded-md"
+              className="rounded-xl shadow-md"
             ></Image>
           </div>
           <div className="lg:w-1/2 w-full lg:p-4 pt-2 lg:pt-4">
-            <h1 className="poppins font-extrabold text-lg">Dámosy Panni</h1>
-            <p className="text-justify">
+            <Highlight
+              query={"Dámosy Panni"}
+              styles={{
+                fontSize: "lg",
+                fontWeight: "bold",
+                px: "4",
+                bg: "whiteAlpha.700",
+                py: "1",
+                rounded: "full",
+              }}
+            >
+              Dámosy Panni
+            </Highlight>
+            <p className="text-justify mt-2">
               7. osztályosként kezdtem az Eötvösben önkénteskedni, és hamar
               nagyon megszerettem. Bogival észrevettük, hogy az IKSz rendszerben
               akadnak nehézségek, amik akadályozzák a diákokat, hogy élvezhessék
@@ -37,12 +52,24 @@ export default function Alapitok() {
             <Image
               src={Bogi}
               alt="Egy portré kép Török Boglárkáról"
-              className="rounded-md"
+              className="rounded-xl shadow-md"
             ></Image>
           </div>
           <div className="lg:w-1/2 w-full lg:p-4 pt-2 lg:pt-4">
-            <h1 className="poppins font-extrabold text-lg">Török Boglárka</h1>
-            <p className="text-justify">
+            <Highlight
+              query={"Török Boglárka"}
+              styles={{
+                fontSize: "lg",
+                fontWeight: "bold",
+                px: "4",
+                bg: "whiteAlpha.700",
+                py: "1",
+                rounded: "full",
+              }}
+            >
+              Török Boglárka
+            </Highlight>
+            <p className="text-justify mt-2">
               2022-ben 10. osztályosként, amikor a 4. évemet töltöttem az
               Eötvösben, határoztuk el Pannival, hogy szeretnénk az
               önkénteskedéssel komolyabban foglalkozni. Az iskolában szerzett

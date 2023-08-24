@@ -4,7 +4,7 @@ import Logo from "../../public/logo.jpg";
 
 export default function GeneralNekunkX() {
   return (
-    <div className="w-full h-auto flex lg:flex-row flex-col items-center lg:justify-center justify-start gap-8 p-12">
+    <div className="w-full h-auto flex lg:flex-row flex-col items-center lg:justify-center justify-start gap-8 p-8 lg:p-12">
       <div className="lg:w-1/3 w-full flex lg:justify-end justify-center">
         <Image
           src={Logo}
@@ -19,17 +19,15 @@ export default function GeneralNekunkX() {
           Mi a célunk?
         </h1>
         <p>
-          A Nekünk X egy nonprofit szervezet, ahol középiskolás diákoknak
-          segítünk összegyűjteni az érettségihez kötelező 50 IKSz órájukat
-          (Iskolai Közösségi Szolgálat). Ezeket az önkéntes órákat minden
-          diáknak magának kell összegyűjtenie, és sokszor nem is kapnak
-          segítséget hozzá az iskolájuktól. A Nekünk X csapatának az a célja,
-          hogy a szervezés és lebonyolítás terhét levegye a tanulók válláról, és
-          hagyja a diákokat, hogy megtapasztalják a közösségi szolgálatban rejlő
-          örömöket, ezzel is népszerűsítve az önkéntes munkát. Igyekszünk minél
-          több sokszínű lehetőséget kínálni, hogy mindenki megtalálhassa a
-          számára legérdekesebbet. És a legjobb? A teljes Nekünk X csapat
-          középiskolás diákokból áll, úgyhogy pontosan tudjuk, hogy mire van
+          A Nekünk X egy nonprofit szervezet, amely középiskolás diákoknak segít
+          az érettségihez szükséges 50 IKSz (Iskolai Közösségi Szolgálat) óra
+          megszerzésében. Tudjuk, hogy sokszor a diákoknak egyedül kell
+          vállalniuk az önkéntes órák összegyűjtését, és gyakran hiányzik a
+          segítség az iskolától. Célja, hogy könnyebbé tegye a szervezést és
+          lebonyolítást, így a diákok maguk is élvezhetik a közösségi szolgálat
+          előnyeit. Mindenféle lehetőséget kínálunk, hogy mindenki rátaláljon a
+          számára legmegfelelőbb feladatokra. És a legjobb rész? A teljes Nekünk
+          X csapat középiskolás diákokból áll, tehát pontosan értjük, mire van
           szükségetek!
         </p>
       </div>
