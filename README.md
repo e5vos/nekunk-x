@@ -1,7 +1,5 @@
 # Nekünk X - A közösségért
 
-**Figyelem!** Ez egy monorepo, mely azt jelenti, hogy több projekt található benne. A különböző projektek kódjai a ./apps/ mappában találhatóak.
-
 ### A repository-n belül található projektek:
 - **web**: A Nekünk X publikus weboldala [https://nekunk-x.ga](https://nekunk-x.ga)
 - **api**: A programjainkat tároló szerver [https://api.nekunk-x.ga](https://api.nekunk-x.ga)
